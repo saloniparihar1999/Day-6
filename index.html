@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+    //1.1  https://github.com/rvsp/typescript-oops/blob/master/Practice/Movie.md
+
+
+        class Movie {
+                constructor(title, studio, rating) {
+                    this.title = title,
+                        this.studio = studio
+                    // this.rating=rating
+                    // this.rating="PG"
+                    if (rating == null) {
+                        this.rating = "PG"
+                    } else {
+                        this.rating = rating
+                    }
+                }
+                getPG(arr) {
+                    console.log("getPG method is called", arr)
+                    //only pg as a rating, that should be there
+                    let PGResult = []
+                    for (var i = 0; i < arr.length; i++) {
+                        // console.log(arr[i].rating)
+                        if (arr[i].rating == "PG") {
+                            //console.log(arr[i].rating)
+                            //console.log(arr[i])
+                            PGResult.push(arr[i])
+
+                        }
+                    }
+                    console.log(PGResult)
+
+
+                }
+            }
+            let movie1 = new Movie("Casino Royale", "Eon Productions", "PG­13")
+            let movie2 = new Movie("ABC", "A Productions", "PG")
+            let movie3 = new Movie("DEF", "D Productions")
+            let movie4 = new Movie("XYZ", "X Productions", "PG­15")
+            let movie5 = new Movie("LMN", "L Productions")
+            let movie6 = new Movie("TYU", "T Productions", "PG")
+            let movie7 = new Movie("TYU", "T Productions")
+
+
+            var array = [movie1, movie2, movie3, movie4, movie5, movie6, movie7]
+            console.log(array)
+
+            console.log(movie1)
+            movie4.getPG(array)
+
+    //1.2 Write a “person” class to hold all the details.
+
+
+             class Person {
+                    constructor(name, age, location, course) {
+                        console.log(`My name is ${name}, age is ${age}. I reside at ${location} and am learning ${course}`)
+                        this.name = name,
+                            this.age = age,
+                            this.location = location
+                        this.course = course
+                    }
+                    getPersonDetails() {
+                        console.log(`My name is ${this.name}, age is ${this.age}. I reside at ${this.location} and am learning ${this.course}`)
+                    }
+                }
+                var newUser = new Person("shubham", 26, "Bengalaru", "FSD")
+
+                newUser.getPersonDetails()
+
+
+        
+    //1.3 write a class to calculate the uber price.
+
+            class UberFareCalculator {
+                    constructor(baseFare, costPerMinute, costPerMile) {
+                        this.baseFare = baseFare;
+                        this.costPerMinute = costPerMinute;
+                        this.costPerMile = costPerMile;
+                    }
+
+                    calculateFare(minutes, miles) {
+                        const timeCost = minutes * this.costPerMinute;
+                        const distanceCost = miles * this.costPerMile;
+                        const totalFare = this.baseFare + timeCost + distanceCost;
+
+                        return totalFare;
+                    }
+
+                    setSurgeMultiplier(multiplier) {
+                        this.baseFare *= multiplier;
+                        this.costPerMinute *= multiplier;
+                        this.costPerMile *= multiplier;
+                    }
+                }
+
+                // Usage
+                const uberX = new UberFareCalculator(2.50, 0.25, 1.50);  // Example rates: Rs 2.50 base fare, Rs 0.25/min, Rs 1.50/mile
+
+                console.log('Fare',uberX.calculateFare(10, 5));  // 10 minutes and 5 miles
+
+                // If there's a surge pricing
+                uberX.setSurgeMultiplier(1.5);
+                console.log('Surge Price',uberX.calculateFare(10, 5));  // With surge pricing
+
+    </script>
+
+</body>
+
+</html>
